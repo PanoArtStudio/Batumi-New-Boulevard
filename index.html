@@ -1,71 +1,89 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Project Title</title>
-<meta charset="utf-8">
-<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
-<style> @-ms-viewport { width: device-width; } </style>
-<link rel="stylesheet" href="vendor/reset.min.css">
-<link rel="stylesheet" href="style.css">
-</head>
-<body class="single-scene ">
-
-<div id="pano"></div>
-
-<div id="sceneList">
-  <ul class="scenes">
-    
-      <a href="javascript:void(0)" class="scene" data-id="0-new-boulevard---gdumbadze-panorama">
-        <li class="text">New boulevard - G.Dumbadze panorama</li>
-      </a>
-    
-  </ul>
-</div>
-
-<div id="titleBar">
-  <h1 class="sceneName"></h1>
-</div>
-
-<a href="javascript:void(0)" id="autorotateToggle">
-  <img class="icon off" src="img/play.png">
-  <img class="icon on" src="img/pause.png">
-</a>
-
-<a href="javascript:void(0)" id="fullscreenToggle">
-  <img class="icon off" src="img/fullscreen.png">
-  <img class="icon on" src="img/windowed.png">
-</a>
-
-<a href="javascript:void(0)" id="sceneListToggle">
-  <img class="icon off" src="img/expand.png">
-  <img class="icon on" src="img/collapse.png">
-</a>
-
-<a href="javascript:void(0)" id="viewUp" class="viewControlButton viewControlButton-1">
-  <img class="icon" src="img/up.png">
-</a>
-<a href="javascript:void(0)" id="viewDown" class="viewControlButton viewControlButton-2">
-  <img class="icon" src="img/down.png">
-</a>
-<a href="javascript:void(0)" id="viewLeft" class="viewControlButton viewControlButton-3">
-  <img class="icon" src="img/left.png">
-</a>
-<a href="javascript:void(0)" id="viewRight" class="viewControlButton viewControlButton-4">
-  <img class="icon" src="img/right.png">
-</a>
-<a href="javascript:void(0)" id="viewIn" class="viewControlButton viewControlButton-5">
-  <img class="icon" src="img/plus.png">
-</a>
-<a href="javascript:void(0)" id="viewOut" class="viewControlButton viewControlButton-6">
-  <img class="icon" src="img/minus.png">
-</a>
-
-<script src="vendor/screenfull.min.js" ></script>
-<script src="vendor/bowser.min.js" ></script>
-<script src="vendor/marzipano.js" ></script>
-
-<script src="data.js"></script>
-<script src="index.js"></script>
-
-</body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="mobile-web-app-capable" content="yes" />		
+		<style type="text/css" title="Default">
+			body, div, h1, h2, h3, span, p {
+				font-family: Verdana,Arial,Helvetica,sans-serif;
+			}
+			/* fullscreen */
+			html {
+				height:100%;
+			}
+			body {
+				height:100%;
+				margin: 0px;
+				overflow:hidden; /* disable scrollbars */
+				font-size: 10pt;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* remove highlight on tab for iOS/Android */
+			}
+			/* fix for scroll bars on webkit & >=Mac OS X Lion */ 
+			::-webkit-scrollbar {
+				background-color: rgba(0,0,0,0.5);
+				width: 0.75em;
+			}
+			::-webkit-scrollbar-thumb {
+    			background-color:  rgba(255,255,255,0.5);
+			}
+		</style>	
+	</head>
+	<body>
+<!-- - - - - - - 8<- - - - - - cut here - - - - - 8<- - - - - - - -->
+		<script type="text/javascript" src="pano2vr_player.js">
+		</script>
+		<script type="text/javascript" src="skin.js">
+		</script>
+		<div id="container" style="width:100%;height:100%;overflow:hidden;">
+		<br>Loading...<br><br>
+		This content requires HTML5 with CSS3 3D Transforms or WebGL.
+		</div>
+		<script type="text/javascript">
+	
+			// create the panorama player with the container
+			pano=new pano2vrPlayer("container");
+		// add the skin object
+		skin=new pano2vrSkin(pano);
+		// load the configuration
+		panorama='<?xml version="1.0" encoding="UTF-8"?>';
+			panorama+='<panorama id="node1" appversion="5.2.4" apprev="15996">';
+			panorama+='  <input width="4454" overlap="1" levelingroll="0" height="4454" levelingpitch="0" leveltilesize="510" levelbias="0.400" levelbiashidpi="0.400" leveltileurl="tiles/node1/cf_%c/l_%l/c_%x/tile_%y.jpg">';
+			panorama+='    <level width="4454" predecode="0" height="4454" preload="0"/>';
+			panorama+='    <level width="2227" predecode="0" height="2227" preload="0"/>';
+			panorama+='    <level width="1113" predecode="0" height="1113" preload="0"/>';
+			panorama+='    <level width="556" predecode="0" height="556" preload="0"/>';
+			panorama+='    <level width="278" predecode="1" height="278" preload="1"/>';
+			panorama+='    <preview strip="1" color="0x808080"/>';
+			panorama+='  </input>';
+			panorama+='  <view fovmode="0" pannorth="0">';
+			panorama+='    <start projection="4" tilt="0.491633" pan="-10.9292" fov="70"/>';
+			panorama+='    <flyin projection="9" tilt="-90" pan="0" fov="170"/>';
+			panorama+='    <min tilt="-90" pan="0" fov="5"/>';
+			panorama+='    <max tilt="90" fovstereographic="270" fovfisheye="360" pan="360" fov="120" scaletofit="1"/>';
+			panorama+='  </view>';
+			panorama+='  <userdata description="" copyright="" title="" info="" longitude="" source="" author="" datetime="30.01.2025 0:02" tags="2025_01_28" customnodeid="" comment="" latitude=""/>';
+			panorama+='  <hotspots width="180" height="20" wordwrap="1">';
+			panorama+='    <label width="180" enabled="1" height="20" background="1" textcolor="0x000000" backgroundcolor="0xffffff" border="1" borderradius="1" backgroundalpha="1" bordercolor="0x000000" wordwrap="1" borderalpha="1" textalpha="1"/>';
+			panorama+='    <polystyle backgroundcolor="0x0000ff" backgroundalpha="0.2509803921568627" bordercolor="0x0000ff" borderalpha="1" handcursor="1" mode="0"/>';
+			panorama+='  </hotspots>';
+			panorama+='  <media/>';
+			panorama+='  <transition enabled="0" zoomfov="20" blendcolor="0x000000" type="crossdissolve" zoomout="0" softedge="0" blendtime="1" zoomspeed="2" zoomin="0" zoomoutpause="1"/>';
+			panorama+='  <animation syncanimationwithvideo="0" useinautorotation="0"/>';
+			panorama+='  <control invertwheel="0" lockedkeyboard="0" simulatemass="1" contextfullscreen="0" dblclickfullscreen="0" invertcontrol="1" contextprojections="0" speedwheel="1" rubberband="0" lockedkeyboardzoom="0" hideabout="0" sensitivity="8" lockedwheel="0" lockedmouse="0"/>';
+			panorama+='</panorama>';
+			panorama+='';
+		pano.readConfigString(panorama);
+		</script>
+		<noscript>
+			<p><b>Please enable Javascript!</b></p>
+		</noscript>
+<!-- - - - - - - 8<- - - - - - cut here - - - - - 8<- - - - - - - --> 
+		<!-- Hack needed to hide the url bar on iOS 9, iPhone 5s --> 
+		<div style="width:1px;height:1px;"></div>
+	</body>
 </html>
